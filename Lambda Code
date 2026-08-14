@@ -1,0 +1,28 @@
+import json
+import boto3
+import uuid
+
+dynamodb = boto3.resource("dynamodb")
+table = dynamodb.Table("TodoTable")
+
+def lambda_handler(event, context):
+
+    body = json.loads(event["body"])
+
+    todo_id = str(uuid.uuid4())
+
+    item = {
+        "id": todo_id,
+        "task": body["task"],
+        "completed": False
+    }
+
+    table.put_item(Item=item)
+
+    return {
+        "statusCode": 201,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": json.dumps(item)
+    }
