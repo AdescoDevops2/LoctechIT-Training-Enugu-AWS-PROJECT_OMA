@@ -1,0 +1,4 @@
+curl -X POST \
+-H "Content-Type: application/json" \
+-d '{"task":"Learn AWS Lambda"}' \
+YOUR_API_URL/todos
