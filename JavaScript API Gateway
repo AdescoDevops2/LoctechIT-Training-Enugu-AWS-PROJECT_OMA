@@ -1,0 +1,5 @@
+fetch("YOUR_API_GATEWAY_URL/todos")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    });
